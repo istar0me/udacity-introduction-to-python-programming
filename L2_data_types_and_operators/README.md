@@ -23,6 +23,26 @@
   - [L2.13 Strings](#l213-strings)
     - [len()](#len)
   - [L2.14 Quiz: Strings](#l214-quiz-strings)
+  - [L2.16 Type and Type Conversion](#l216-type-and-type-conversion)
+  - [L2.17 Quiz: Type and Type Conversion](#l217-quiz-type-and-type-conversion)
+  - [L2.19 String Methods](#l219-string-methods)
+  - [L2.20 String Methods](#l220-string-methods)
+    - [doc](#doc)
+      - [`str.format()`](#strformat)
+  - [L2.21 Another String Method - Split](#l221-another-string-method---split)
+    - [doc](#doc-1)
+      - [`str.split()`](#strsplit)
+  - [L2.22 Quiz: String Methods Practice](#l222-quiz-string-methods-practice)
+    - [doc](#doc-2)
+      - [`str.find()`](#strfind)
+      - [`str.rfind()`](#strrfind)
+      - [`str.count()`](#strcount)
+  - [2.24 "There's a Bug in my Code"](#224-%22theres-a-bug-in-my-code%22)
+    - [Successful Debugging Method](#successful-debugging-method)
+      - [Understanding Common Error Messages](#understanding-common-error-messages)
+      - [Search for Your Error Message](#search-for-your-error-message)
+  - [L2.26 Summary](#l226-summary)
+    - [What's Next?](#whats-next)
   - [Vocabulary](#vocabulary)
   - [Further Reading](#further-reading)
 
@@ -363,6 +383,206 @@ print(udacity_length) # 7
 len(835) # TypeError: object of type 'int' has no len()
 ```
 
+## L2.16 Type and Type Conversion
+
+- there're specially designed functions for working with each data type
+  - e.g. In [L2.14 Quiz: Strings](#l214-quiz-strings), `len(835)` returns an error, because it only accept string as a parameter
+
+## L2.17 Quiz: Type and Type Conversion
+
+- Quiz: Total Sales
+
+In this quiz, you’ll need to change the types of the input and output data in order to get the result you want.
+
+Calculate and print the total sales for the week from the data provided. Print out a string of the form `"This week's total sales: xxx"`, where xxx will be the actual total of all the numbers. You’ll need to change the type of the input data in order to calculate that total.
+
+```py
+mon_sales = "121"
+tues_sales = "105"
+wed_sales = "110"
+thurs_sales = "98"
+fri_sales = "95"
+
+#TODO: Print a string with this format: This week's total sales: xxx
+# You will probably need to write some lines of code before the print statement.
+
+weekly_sales = int(mon_sales) + int(tues_sales) + int(wed_sales) + int(thurs_sales) + int(fri_sales)
+weekly_sales = str(weekly_sales) # don't forget convert back to str type
+print("This week's total sales: " + weekly_sales)
+```
+
+## L2.19 String Methods
+
+![](img/String&#32;Methods&#32;0-33&#32;screenshot.png)
+
+- functions are similiar to operators
+  - the only difference is how they look
+
+| diff             | operator           | function      |
+| ---------------- | ------------------ | ------------- |
+| inputs placement | in the parentheses |
+| notation         | descriptive name   | short symbols |
+
+- there're three techniques for operating a value
+  1. operator
+  2. function
+  3. **method**
+- **Method**: a function that **belongs** to an object
+  - methods are associated with specific types of objects
+  - that is, there are different methods depending on the type of date we're working with
+
+- e.g. `.title()` only work with string type
+
+```py
+print("sebastian thrun".title()) # Sebastian Thrun
+```
+
+- **Argument(引數)**: the inputs in the parentheses
+  - the object is always the first argument to method
+  - e.g. `"sebastian thrun"` and `full_name` is the argument of `title()` and `islower` methods.
+
+  ```py
+  print("sebatian thrun".title())
+  full_name = "sebastian thrun"
+  print(full_name.islower())
+  ```
+
+## L2.20 String Methods
+
+- `format()` Practice
+
+  Use the coding space below to practice using the format() string method. There are no right or wrong answers here, just practice!
+
+  ```py
+  # Write two lines of code below, each assigning a value to a variable
+
+  ncu_students = 1
+  ccu_students = 2
+
+  # Now write a print statement using .format() to print out a sentence and the 
+  #   values of both of the variables
+
+  print("the student in 中字輩 is {0}".format(ncu_students + ccu_students))
+  ```
+
+### doc
+
+#### [`str.format()`](https://docs.python.org/3/library/stdtypes.html#str.format)
+
+## L2.21 Another String Method - Split
+
+- two arguments:
+  1. sep: seperator
+     - if not specified or `None`, default is blank space
+     - it can consists of multiple character
+  2. maxsplit: the list will have at most **`maxsplit + 1`** elements
+     - if not specified or `-1`, then there's no limit
+
+```py
+# if not given, default is blank space
+new_str = "The cow jumped over the moon."
+new_str.split() # ['The', 'cow', 'jumped', 'over', 'the', 'moon.']
+
+# the list will have at most 3+1 = 4 elements
+new_str.split(' ', 3) # ['The', 'cow', 'jumped', 'over the moon.']
+
+# sep
+new_str.split(None, 3) # ['The', 'cow', 'jumped', 'over the moon.']
+
+# empty string will still be seperated
+'1,,2'.split(',') # ['1', '', '2']
+
+# sep can consists of multiple characters
+'1<>2<>3'.split('<>') # ['1', '2', '3']
+```
+
+- *tip: `None` is a type called `NoneType`*
+
+### doc
+
+#### [`str.split()`](https://docs.python.org/3/library/stdtypes.html#str.split)
+
+```py
+print(type(None)) # <class 'NoneType'>
+```
+
+## L2.22 Quiz: String Methods Practice
+
+- print the following question about the verse
+  1. What is the length of the string variable verse?
+  2. What is the index of the first occurrence of the word 'and' in verse?
+  3. What is the index of the last occurrence of the word 'you' in verse?
+  4. What is the count of occurrences of the word 'you' in the verse?
+- You will need to refer to [Python's string methods documentation](https://docs.python.org/2/library/string.html).
+
+```py
+verse = "If you can keep your head when all about you\n  Are losing theirs and blaming it on you,\nIf you can trust yourself when all men doubt you,\n  But make allowance for their doubting too;\nIf you can wait and not be tired by waiting,\n  Or being lied about, don’t deal in lies,\nOr being hated, don’t give way to hating,\n  And yet don’t look too good, nor talk too wise:"
+print(verse)
+
+# Use the appropriate functions and methods to answer the questions above
+# Bonus: practice using .format() to output your answers in descriptive messages!
+message = "the length of the verse is {}, the index of the first occurrence of the word 'and' in verse is{}, the last occurrences of the word 'you' in verse {}, the count of occurrences of the word 'you' in verse is {}"
+
+length = len(verse) # 362
+first_idx = verse.find("and") # 65
+last_idx = verse.rfind("you") # 186
+count = verse.count("you") # 8
+
+print(message.format(length, first_idx, last_idx, count))
+```
+
+- tip
+  - we can create an empty curly braces(`{}`) at first, then add arguments later inside the format method.
+
+### doc
+
+#### [`str.find()`](https://docs.python.org/3/library/stdtypes.html#str.find)
+#### [`str.rfind()`](https://docs.python.org/3/library/stdtypes.html#str.rfind)
+#### [`str.count()`](https://docs.python.org/3/library/stdtypes.html#str.count)
+
+## 2.24 "There's a Bug in my Code"
+
+### Successful Debugging Method
+
+1. [Understand common error messages you might receive and what to do about them.](#understanding-common-error-messages)
+2. [Search for your error message, using the Web community.](#search-for-your-error-message)
+3. Use print statements.
+
+#### Understanding Common Error Messages
+
+- "SyntaxError: unexpected EOF while parsing": often produced when you have accidentally left out something, like a parenthesis.
+
+  ```py
+  greeting = "hello"
+  print(greeting.upper
+
+  # print(greeting.upper
+  #                       ^
+  # SyntaxError: unexpected EOF while parsing
+  ```
+
+- "TypeError: len() takes exactly one argument (0 given)": not include the required number of arguments when I'm calling a function
+
+  ```py
+  chars = "supercalifragilisticexpialidocious"
+  len()
+
+  # TypeError: len() takes exactly one argument (0 given)
+  ```
+
+#### Search for Your Error Message
+
+- Copy and paste the error message, then search
+- search using just key words from the error message
+- along with some other helpful words that describe your context, like Python
+
+## L2.26 Summary
+
+### What's Next?
+
+- Data structures: where you organize and group together these data types into different containers.
+- two remaining types of operators in Python
+
 ## Vocabulary
 
 1. Mathematical Order of Operations (n.) 運算次序
@@ -378,7 +598,8 @@ len(835) # TypeError: object of type 'int' has no len()
 8. look out for (ph.) 注意、留神
 9. edge case (n.) 邊界情況
 10. punctuation (n.) 標點符號
-11. encyclopaedia (n.) 百科全
+11. encyclopaedia (n.) 百科全書
+12. disguise (v.) 偽裝
 
 <!-- ## Reference
 
@@ -388,3 +609,5 @@ len(835) # TypeError: object of type 'int' has no len()
 
 1. [Rounding Methods](https://www.mathsisfun.com/numbers/rounding-methods.html)
 2. [PEP 8 -- Style Guide for Python Code | Python.org](https://www.python.org/dev/peps/pep-0008/)
+3. [Built-in Types — Python 3.8.2rc2 documentation](https://docs.python.org/3/library/stdtypes.html#string-methods)
+4. [如何使用 Python 進行字串格式化](https://blog.techbridge.cc/2019/05/03/how-to-use-python-string-format-method/)
