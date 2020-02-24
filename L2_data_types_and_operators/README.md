@@ -54,7 +54,7 @@
 
     ![print](img/Introduction&#32;1-19&#32;screenshot.png)
 
-- Even though there's space between `print` and `(`, it can still be interpreted. But we're **not recommend** this approach.
+- Even though there's a space between `print` and `(`, it can still be interpreted. But we're **not recommend** this approach.
 
     ```py
     print(1+1) # 2
@@ -418,10 +418,10 @@ print("This week's total sales: " + weekly_sales)
 - functions are similiar to operators
   - the only difference is how they look
 
-| diff             | operator           | function      |
-| ---------------- | ------------------ | ------------- |
-| inputs placement | in the parentheses |
-| notation         | descriptive name   | short symbols |
+| diff             | operator            | function           |
+| ---------------- | ------------------- | ------------------ |
+| inputs placement | next to an operator | in the parentheses |
+| notation         | descriptive name    | short symbols      |
 
 - there're three techniques for operating a value
   1. operator
