@@ -123,14 +123,14 @@ print('Sunday' in months, 'Sunday' not in months)
 
 #### Strings vs. Lists
 
-Features | Strings | Lists
-- | - | -
-Support indexing | O | O
-Support slicing | O | O
-Support `len()` | O | O
-Elements | sequences of letters | any type of objects
-Mutability | X | O
-Order | O | O
+| Features         | Strings              | Lists               |
+| ---------------- | -------------------- | ------------------- |
+| Support indexing | O                    | O                   |
+| Support slicing  | O                    | O                   |
+| Support `len()`  | O                    | O                   |
+| Elements         | sequences of letters | any type of objects |
+| Mutability       | X                    | O                   |
+| Order            | O                    | O                   |
 
 #### Mutability
 
