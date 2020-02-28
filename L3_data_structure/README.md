@@ -328,14 +328,12 @@ print("The dimensions are {}x{}x{}".format(length, width, height)) # The dimensi
 - the parenthese`()` are optional when making tuple, and programmer frequently omit it if parentheses don't clarify the code.
 - tuple unpacking: assign the information from a tuple into mutiple variables
 
----
+```py
+length, width, height = 52, 40, 100
+print("The dimensions are {}x{}x{}".format(length, width, height)) # The dimensions are 52x40x100
+```
 
 - if we don't need to use `dimensions` directly, we can shorten the code
-
-    ```py
-    length, width, height = 52, 40, 100
-    print("The dimensions are {}x{}x{}".format(length, width, height)) # The dimensions are 52x40x100
-    ```
 
 ## L3.10 Quiz: Tuples
 
@@ -419,7 +417,7 @@ print(tuple_a == tuple_b) # True
   print(elements) # {'hydrogen': 1, 'helium': 2, 'carbon': 6, 'lithium': 3}
   ```
 
-- dictionary keys are similar to list indices, but dictionary can have keys of any immutable type, not just integets
+- dictionary keys are similar to list indices, but dictionary can have keys of any immutable type, not just integers
   - it's **not necessary** for every key to have **the same type**
 - dictionary also support `in` operator
 
@@ -493,12 +491,12 @@ print(a == c) # True
 print(a is c) # False
 ```
 
-expression | output | reason
-- | - | -
-a == b | True | List a and list b are equal(`==`) and identical(`is`)
-a is b | True | as above
-a == c | True | List c is equal(`==`) to a (and b) since they have same concpet
-a is c | False | List b and list c are point to two different objects (i.e., they're not identical object)
+| expression | output | reason                                                                                    |
+| ---------- | ------ | ----------------------------------------------------------------------------------------- |
+| a == b     | True   | List a and list b are equal(`==`) and identical(`is`)                                     |
+| a is b     | True   | as above                                                                                  |
+| a == c     | True   | List c is equal(`==`) to a (and b) since they have same concpet                           |
+| a is c     | False  | List b and list c are point to two different objects (i.e., they're not identical object) |
 
 ## Vocabulary
 
