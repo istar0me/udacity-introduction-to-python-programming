@@ -6,6 +6,7 @@
   - [L2.2 Arithmetic Operators](#l22-arithmetic-operators)
   - [L2.5 Variables and Assignment Operators](#l25-variables-and-assignment-operators)
     - [Variable Naming Scheme](#variable-naming-scheme)
+      - [Snake case](#snake-case)
     - [Assignment Operators](#assignment-operators)
   - [L2.6 Quiz: Variables and Assignment Operators](#l26-quiz-variables-and-assignment-operators)
     - [Scientific Notation](#scientific-notation)
@@ -151,6 +152,8 @@
 
 ![snake case](img/L2&#32;04b&#32;Variables&#32;II&#32;V3&#32;1-55&#32;screenshot.png)
 
+#### Snake case
+
 - **snake case**: use all lowercase letters and underscores to separate words
 
 ### Assignment Operators
@@ -291,7 +294,7 @@ ZeroDivisionError: division by zero
 ### Two Types of Error
 
 - In general, there are two types of errors to look out for
-  - Syntax: problem detected when Python checks the code **before it runs it**
+  - Syntax: problem detected when Python checks the code **before runs it**
   - Exceptions: problem that occurs **when the code is running**
 
 ## L2.10 Booleans, Comparison Operators, and Logical Operators
@@ -421,7 +424,7 @@ print("This week's total sales: " + weekly_sales)
 | diff             | operator            | function           |
 | ---------------- | ------------------- | ------------------ |
 | inputs placement | next to an operator | in the parentheses |
-| notation         | descriptive name    | short symbols      |
+| notation         | short symbols       | descriptive name   |
 
 - there're three techniques for operating a value
   1. operator
@@ -498,13 +501,13 @@ new_str.split(None, 3) # ['The', 'cow', 'jumped', 'over the moon.']
 
 - *tip: `None` is a type called `NoneType`*
 
+  ```py
+  print(type(None)) # <class 'NoneType'>
+  ```
+
 ### doc
 
 #### [`str.split()`](https://docs.python.org/3/library/stdtypes.html#str.split)
-
-```py
-print(type(None)) # <class 'NoneType'>
-```
 
 ## L2.22 Quiz: String Methods Practice
 
