@@ -1,0 +1,7 @@
+elements = {'hydrogen': 1, 'helium': 2, 'carbon': 6}
+
+x = elements.get('delithium') # None
+is_null = x is None
+not_null = x is not None
+print(is_null) # True
+print(not_null) # False
