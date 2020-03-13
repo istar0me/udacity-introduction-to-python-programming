@@ -1,5 +1,9 @@
 # Data Types and Operators
 
+<details><summary>Outline</summary>
+
+<Dropdown Content>
+
 - [Data Types and Operators](#data-types-and-operators)
   - [L2.1 Introduction](#l21-introduction)
     - [print()](#print)
@@ -46,6 +50,8 @@
     - [What's Next?](#whats-next)
   - [Vocabulary](#vocabulary)
   - [Further Reading](#further-reading)
+
+</details>
 
 ## L2.1 Introduction
 
