@@ -38,10 +38,10 @@
     - [`get` with a Default Value](#get-with-a-default-value)
     - [Checking for Equality vs. Identity: `==` vs. `is`](#checking-for-equality-vs-identity--vs-is)
   - [L3-18. Check for Understanding: Data Structures](#l3-18-check-for-understanding-data-structures)
-  - [L2-19. Compound Data Structures](#l2-19-compound-data-structures)
-  - [L2-20. Quiz: Compound Data Structures](#l2-20-quiz-compound-data-structures)
-  - [L2-22. Practice Questions](#l2-22-practice-questions)
-  - [L2-24. Conclusion](#l2-24-conclusion)
+  - [L3-19. Compound Data Structures](#l3-19-compound-data-structures)
+  - [L3-20. Quiz: Compound Data Structures](#l3-20-quiz-compound-data-structures)
+  - [L3-22. Practice Questions](#l3-22-practice-questions)
+  - [L3-24. Conclusion](#l3-24-conclusion)
   - [Vocabulary](#vocabulary)
 
 </details>
@@ -617,13 +617,13 @@ room_numbers = {
 print(room_numbers[('Eugene', 'Zach')]) # 395
 ```
 
-## L2-19. Compound Data Structures
+## L3-19. Compound Data Structures
 
 ![compound_data_structures](img/2020-03-13-18-19-37.png)
 
 - We can include containers in other containers to create compound data structures
 
-## L2-20. Quiz: Compound Data Structures
+## L3-20. Quiz: Compound Data Structures
 
 - Q3: Check the attributes of a collection for which using a Python set would be appropriate.
 
@@ -645,12 +645,12 @@ print(room_numbers[('Eugene', 'Zach')]) # 395
     |        | Sortable                                        | unordered -> unsortable      |
     | (O)    | Can be nested                                   |                              |
 
-## L2-22. Practice Questions
+## L3-22. Practice Questions
 
 - Q: What is the first key in dictionary?
 - A: There's no first key.
 
-## L2-24. Conclusion
+## L3-24. Conclusion
 
 | Data Structure | Ordered | Mutable | Constructor        | Example                  |
 | -------------- | ------- | ------- | ------------------ | ------------------------ |
