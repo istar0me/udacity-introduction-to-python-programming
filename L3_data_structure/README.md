@@ -1,5 +1,9 @@
 # Data Structure
 
+<details><summary>Outline</summary>
+
+<Dropdown Content>
+
 - [Data Structure](#data-structure)
   - [L3.1 Introduction](#l31-introduction)
     - [Primitive Data Types](#primitive-data-types)
@@ -23,6 +27,7 @@
     - [List Methods](#list-methods)
   - [L3.8 Check for Understanding: Lists](#l38-check-for-understanding-lists)
   - [L3.9 Tuples](#l39-tuples)
+    - [Tuple Support Indexing and Slicing](#tuple-support-indexing-and-slicing)
     - [Tuple Unpacking](#tuple-unpacking)
   - [L3.10 Quiz: Tuples](#l310-quiz-tuples)
   - [L3.11 Sets](#l311-sets)
@@ -32,7 +37,14 @@
   - [L3.14 Quiz: Dictionaries and Identity Operators](#l314-quiz-dictionaries-and-identity-operators)
     - [`get` with a Default Value](#get-with-a-default-value)
     - [Checking for Equality vs. Identity: `==` vs. `is`](#checking-for-equality-vs-identity--vs-is)
+  - [L3-18. Check for Understanding: Data Structures](#l3-18-check-for-understanding-data-structures)
+  - [L2-19. Compound Data Structures](#l2-19-compound-data-structures)
+  - [L2-20. Quiz: Compound Data Structures](#l2-20-quiz-compound-data-structures)
+  - [L2-22. Practice Questions](#l2-22-practice-questions)
+  - [L2-24. Conclusion](#l2-24-conclusion)
   - [Vocabulary](#vocabulary)
+
+</details>
 
 ---
 
@@ -121,7 +133,7 @@ print(greeting[6:9], months[6:9]) # 'the' ['July', 'August', 'September']
 
 ### Membership Operators
 
-![membership operators](img/L2&#32;16b&#32;Lists&#32;And&#32;Membership&#32;Operators&#32;V3&#32;1-48&#32;screenshot.png)
+![membership_operators](img/L2&#32;16b&#32;Lists&#32;And&#32;Membership&#32;Operators&#32;V3&#32;1-48&#32;screenshot.png)
 
 - `in`: evaluates if object on left side is included in object on right side
 - `not in`: evaluates if object on left side is not included in object on right side
@@ -158,6 +170,8 @@ print('Sunday' in months, 'Sunday' not in months)
 - lists are mutable, strings are immutable
   - ![lists_mutability](img/L2&#32;16c&#32;Lists&#32;And&#32;Membership&#32;Operators&#32;II&#32;V4&#32;0-28&#32;screenshot.png)
   - ![string_mutability](img/L2&#32;16c&#32;Lists&#32;And&#32;Membership&#32;Operators&#32;II&#32;V4&#32;0-33&#32;screenshot.png)
+- immutable can also be called **hashable**
+  - ref: [python - Hashable, immutable - Stack Overflow](https://stackoverflow.com/questions/2671376/hashable-immutable)
 
 #### Order
 
@@ -316,6 +330,14 @@ print(student)  # Jim
 - Why do we have tuples if they're lists with fewer features?
   - Tuples are useful when we have two or more values that are so closely related
 
+### Tuple Support Indexing and Slicing
+
+  ```py
+  tuple = (1, 3, 5, 7, 9)
+  tuple[2] # 5
+  tuple[1:3] #(3, 5)
+  ```
+
 ### Tuple Unpacking
 
 ```py
@@ -401,7 +423,7 @@ print(tuple_a == tuple_b) # True
 
 ### Dictionary
 
-- Dictionary: a data type for **mutable** objects that store mappings of unique keys to values
+- Dictionary: a data type for **mutable** objects that store mappings of unique keys to values(**unordered**)
   - dictionary stores pairs of elements, keys and values
 
   ```py
@@ -436,6 +458,19 @@ print(tuple_a == tuple_b) # True
   print(elements.get('delithium')) # None
   print(elements['delithium']) # KeyError: 'delithium'
   ```
+
+- `keys()` and `values`: return a list of all the keys/values in the dictionary
+  - loot at the last line, it's sorted by the values(county name), not by the keys(rank)
+
+```py
+jp_population_rank = {'3': 'osaka', '1': 'tokyo', '2': 'kanagawa'}
+
+print(jp_population_rank.keys()) # dict_keys(['3', '1', '2'])
+print(jp_population_rank.values()) # dict_values(['osaka', 'tokyo', 'kanagawa'])
+
+print(sorted(jp_population_rank.keys())) # ['1', '2', '3']
+print(sorted(jp_population_rank.values())) # ['kanagawa', 'osaka', 'tokyo']
+```
 
 ### Identity Operators
 
@@ -498,11 +533,141 @@ print(a is c) # False
 | a == c     | True   | List c is equal(`==`) to a (and b) since they have same concpet                           |
 | a is c     | False  | List b and list c are point to two different objects (i.e., they're not identical object) |
 
+## L3-18. Check for Understanding: Data Structures
+
+- Q1: Which of the following statements about tuples are true? Select **all** that apply.
+
+    | answer | option                                                                                                           | reason                                                                    |
+    | ------ | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+    |        | A tuple is a mutable data structure.                                                                             |                                                                           |
+    | (O)    | A tuple is an ordered data structure.                                                                            |                                                                           |
+    | (O)    | A tuple can be indexed and sliced like a list.                                                                   | [Tuple Support Indexing and Slicing](#tuple-support-indexing-and-slicing) |
+    |        | A tuple is defined by listing a sequence of elements separated by commas and contained within curly braces: `{}` | not `{}`, is `()`                                                         |
+
+- Q2: Which of the following statements about sets are true? Select all that apply.
+
+
+
+    | answer | option                                       | reason                                                                                                                                    |
+    | ------ | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+    | (O)    | A set is a mutable data structure.           | we can modify the elements in a set with methods like `add` and `pop`.                                                                    |
+    |        | A set is an ordered data structure.          | A set is an unordered data structure, so you can't index and slice elements like a list; there is no sequence of positions to index with! |
+    |        | A set can be indexed and sliced like a list. | as above                                                                                                                                  |
+    | (O)    | A set does not contain duplicate elements.   |                                                                                                                                           |
+
+- Q3: Is the following statement true or false?
+A set is the only data structure defined with curly braces: `{}`
+
+    | answer | option | reason                                                                                           |
+    | ------ | ------ | ------------------------------------------------------------------------------------------------ |
+    |        | True   |                                                                                                  |
+    | (O)    | False  | Set isn't the only data structure defined with curly braces, `{}`; **dictionaries** does as well |
+
+```py
+a = {}
+print(type(a)) # <class 'dict'>
+
+b = set()
+print(type(b)) # <class 'set'>
+c = dict()
+print(type(c)) # <class 'dict'>
+```
+
+  - If you define a variable with an empty set of curly braces like this: `a = {}`, Python will assign an empty dictionary to that variable.
+  - You can always use `set()` and `dict()` to define empty sets and dictionaries as well.
+
+---
+
+```py
+# invalid dictionary - this should break
+room_numbers = {
+    ['Freddie', 'Jen']: 403,
+    ['Ned', 'Keith']: 391,
+    ['Kristin', 'Jazzmyne']: 411,
+    ['Eugene', 'Zach']: 395
+}
+
+# TypeError: unhashable type: 'list'
+```
+
+- Q6: What's wrong with the code above?
+
+    | answer | option                                                  | reason                                                                        |
+    | ------ | ------------------------------------------------------- | ----------------------------------------------------------------------------- |
+    |        | The dictionary can not use a container for its keys     |                                                                               |
+    | (O)    | The dictionary is using a mutable datatype for its keys | The lists used in the code above are NOT immutable, and thus cannot be hashed |
+    |        | There are too many values in each dictionary key        |                                                                               |
+
+- In Python, any **immutable** object (such as an integer, boolean, string, tuple) is **hashable**
+  - meaning its value does not change during its lifetime.
+  - This allows Python to create a unique hash value to identify it
+  - which can be used by dictionaries to track unique keys and sets to track unique values.
+
+- The code above would be fixed with a set data structure
+
+```py
+# invalid dictionary - this should break
+room_numbers = {
+    ('Freddie', 'Jen'): 403,
+    ('Ned', 'Keith'): 391,
+    ('Kristin', 'Jazzmyne'): 411,
+    ('Eugene', 'Zach'): 395
+}
+
+print(room_numbers[('Eugene', 'Zach')]) # 395
+```
+
+## L2-19. Compound Data Structures
+
+![compound_data_structures](img/2020-03-13-18-19-37.png)
+
+- We can include containers in other containers to create compound data structures
+
+## L2-20. Quiz: Compound Data Structures
+
+- Q3: Check the attributes of a collection for which using a Python set would be appropriate.
+
+    | answer | option                                          | reason                                                                                  |
+    | ------ | ----------------------------------------------- | --------------------------------------------------------------------------------------- |
+    | (O)    | Order in which items appear can be inconsistent | Sets are not ordered, so the order in which items appear can be inconsistent            |
+    |        | You can have the same entry multiple times      |                                                                                         |
+    | (O)    | Mutable (you can change it)                     | Like dictionaries and lists, sets are mutable.                                          |
+    | (O)    | Add items with `.add()`                         |                                                                                         |
+    |        | Sortable                                        | You cannot have the same item twice and you cannot sort sets. (unordered -> unsortable) |
+
+- Q4: Check the attributes of a collection for which using a Python dictionary would be appropriate.
+
+    | answer | option                                          | reason                       |
+    | ------ | ----------------------------------------------- | ---------------------------- |
+    | (O)    | Each item contains two parts                    |                              |
+    |        | Add items with `.append()`                      | not `.append()`, is `.add()` |
+    | (O)    | Order in which items appear can be inconsistent |                              |
+    |        | Sortable                                        | unordered -> unsortable      |
+    | (O)    | Can be nested                                   |                              |
+
+## L2-22. Practice Questions
+
+- Q: What is the first key in dictionary?
+- A: There's no first key.
+
+## L2-24. Conclusion
+
+| Data Structure | Ordered | Mutable | Constructor        | Example                  |
+| -------------- | ------- | ------- | ------------------ | ------------------------ |
+| List           | Yes     | Yes     | `[ ]` or `list()`  | `[5.7, 4, 'yes', 5.7]`   |
+| Tuple          | Yes     | No      | `( )` or `tuple()` | `(5.7, 4, 'yes', 5.7)`   |
+| Set            | No      | Yes     | `{}`* or `set()`   | `{5.7, 4, 'yes'}`        |
+| Dictionary     | No      | No**    | `{ }` or `dict()`  | `{'Jun': 75, 'Jul': 89}` |
+
+- \* You can use curly braces to define a set like this: `{1, 2, 3}`. However, if you leave the curly braces empty like this: `{}` Python will instead create an empty dictionary. So to create an empty set, use `set()`.
+- \*\* A dictionary itself is mutable, but each of its individual **keys must be immutable**.
+
 ## Vocabulary
 
 1. ticker (n.) 自動收報器
 2. reticulate (adj.) 網狀的
 3. aft (n.) 船尾
+4. YTD (abbr.) = Year To Date 到現在為止的一年
 
 <!-- ## Reference -->
 
