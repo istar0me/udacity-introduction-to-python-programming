@@ -34,6 +34,7 @@
   - [L4-15. Quiz: Match Inputs To Outputs](#l4-15-quiz-match-inputs-to-outputs)
   - [L4-16. Building Dictionaries](#l4-16-building-dictionaries)
     - [Method 1: Using a `for` loop to create a set of counters](#method-1-using-a-for-loop-to-create-a-set-of-counters)
+    - [Method 2: Using the `get` method](#method-2-using-the-get-method)
   - [L4-17. Iterating Through Dictionaries with For Loops](#l4-17-iterating-through-dictionaries-with-for-loops)
     - [Iterating Through Dictionaries with `For` Loops](#iterating-through-dictionaries-with-for-loops)
   - [L4-20. While Loops](#l4-20-while-loops)
@@ -387,8 +388,9 @@ output:
 '''
 ```
 
-- Method 2: Using the `get` method
-  - `word_counter.get(word, 0)`: when there's no word in `word_counter`, the default value is 0
+### Method 2: Using the `get` method
+
+- `word_counter.get(word, 0)`: when there's no word in `word_counter`, the default value is 0
 
 ```py
 for word in book_title:
