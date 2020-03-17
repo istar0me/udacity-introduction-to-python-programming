@@ -44,7 +44,24 @@
   - [L4-21. Practice: While Loops](#l4-21-practice-while-loops)
     - [Practice: Factorials with While Loops](#practice-factorials-with-while-loops)
     - [Practice: Factorials with For Loops](#practice-factorials-with-for-loops)
+  - [L4-23. Quiz: While Loops](#l4-23-quiz-while-loops)
+    - [Quiz: Nearest Square](#quiz-nearest-square)
+  - [L4-25. For Loops vs. While Loops](#l4-25-for-loops-vs-while-loops)
+    - [For Loops Vs. While Loops](#for-loops-vs-while-loops)
+  - [L4-26. Check for Understanding: For and While Loops](#l4-26-check-for-understanding-for-and-while-loops)
+    - [Check for Understanding](#check-for-understanding)
+  - [L4-28. Break, Continue](#l4-28-break-continue)
+    - [Break, Continue](#break-continue)
+  - [L4-29. Quiz: Break, Continue](#l4-29-quiz-break-continue)
+    - [Quiz: Break the String](#quiz-break-the-string)
+  - [L4-31. Practice: Loops](#l4-31-practice-loops)
+    - [Coding Quiz: Check for Prime Numbers](#coding-quiz-check-for-prime-numbers)
+    - [for... else](#for-else)
+  - [L4-33. Zip and Enumerate](#l4-33-zip-and-enumerate)
+    - [Zip](#zip)
+    - [Enumerate](#enumerate)
   - [Vocabulary](#vocabulary)
+  - [Reference](#reference)
 
 </details>
 
@@ -544,13 +561,441 @@ for i in range(2, number+1): # (O) there's no need to mutiple by 1
 print(product) # 720
 ```
 
+## L4-23. Quiz: While Loops
+
+### Quiz: Nearest Square
+
+Write a `while` loop that finds the largest square number less than an integer `limit` and stores it in a variable `nearest_square`. A square number is the product of an integer multiplied by itself, for example 36 is a square number because it equals 6*6.
+
+For example, if `limit` is 40, your code should set the `nearest_square` to 36.
+
+- my answer:
+
+    ```py
+    limit = 40
+
+    # write your while loop here
+
+    root = 1
+    nearest_square = 0
+    square = root**2
+    while (square < limit):
+        nearest_square = square
+        root += 1
+        square = root**2
+
+    print(nearest_square)
+    ```
+
+- solution:
+
+    ```py
+    limit = 40
+
+    num = 0 # start from 0
+    while (num+1)**2 < limit: ## +1 is the key point
+        num += 1
+    nearest_square = num**2
+
+    print(nearest_square)
+    ```
+
+## L4-25. For Loops vs. While Loops
+
+### For Loops Vs. While Loops
+
+- `for` loops are ideal when the **number of iterations is known or finite.**
+
+    ```py
+    # when we
+    # have an iterable collection (list, string, set, tuple, dictionary)
+    for name in names:
+
+    # when we want to
+    # iterate through a loop for a definite number of times, using range()
+    for i in range(5):
+    ```
+
+- `while` loops are ideal when **the iterations need to continue until a condition is met.**
+
+    ```py
+    # when we want to
+    # use comparison operators
+    while count <= 100:
+
+    # When you want to
+    # loop based on receiving specific user input.
+    while user_input == 'y':
+    ```
+
+- we need to make sure the while loop has:
+  1. a condition expression that will be assessed and when met, will allow you to exit the loop
+  2. make sure the loop is advancing
+  3. the value of the condition variables is changing with each iteration of the loop.
+
+## L4-26. Check for Understanding: For and While Loops
+
+### Check for Understanding
+
+- Q1: There are certain requirements you want to consider adding into a `while` loop. Which of these requirements must be met? (Select all that apply)
+
+    | answer | option                                                          | reason |
+    | ------ | --------------------------------------------------------------- | ------ |
+    | (O)    | The condition for exiting the while loop should be included     |        |
+    | (O)    | Check if the iteration condition is met                         |        |
+    | (O)    | Body of the loop should change the value of condition variables |        |
+
+- Q2: Question: What type of loop should we use?
+
+    You need to write a loop that takes the numbers in a given list named num_list:
+
+    ```py
+    num_list = [422, 136, 524, 85, 96, 719, 85, 92, 10, 17, 312, 542, 87, 23, 86, 191, 116, 35, 173, 45, 149, 59, 84, 69, 113, 166]
+    ```
+
+    Your code should add up the odd numbers in the list, but only up to the first 5 odd numbers together. If there are more than 5 odd numbers, you should stop at the fifth. If there are fewer than 5 odd numbers, add all of the odd numbers.
+
+- method 1: for loop
+
+    ```py
+    num_list = [422, 136, 524, 85, 96, 719, 85, 92, 10, 17, 312, 542, 87, 23, 86, 191, 116, 35, 173, 45, 149, 59, 84, 69, 113, 166]
+    odd_list = []
+    result_list = []
+
+    for num in num_list:
+        if num % 2 == 1:
+            odd_list.append(num)
+
+    result_list = odd_list[:5]
+
+    print(result_list)
+    ```
+
+- method 2: while loop
+
+    ```py
+    num_list = [422, 136, 524, 85, 96, 719, 85, 92, 10, 17, 312, 542, 87, 23, 86, 191, 116, 35, 173, 45, 149, 59, 84, 69, 113, 166]
+    odd_count = 0
+    index = 0
+    result_list = []
+
+    while ((odd_count < 5) and (index < len(num_list))):
+        if num_list[index] % 2 == 1:
+            result_list.append(num_list[index])
+            odd_count += 1
+
+        index += 1
+
+    print(result_list) # [85, 719, 85, 17, 87]
+    ```
+
+## L4-28. Break, Continue
+
+### Break, Continue
+
+Sometimes we need more control over when a loop should end, or skip an iteration. In these cases, we use the `break` and `continue` keywords, which can be used in both `for` and `while` loops.
+
+- `break` terminates a loop
+- `continue` skips one iteration of a loop
+
+```py
+manifest = [("bananas", 15), ("mattresses", 24), ("dog kennels", 42), ("machine", 120), ("cheeses", 5)]
+
+# the code breaks the loop when weight exceeds or reaches the limit
+print("my solution")
+weight = 0
+items = []
+for cargo_name, cargo_weight in manifest:
+    if weight >= 100: # don't forget equal to
+        print("  the cargo is full")
+        break
+
+    elif cargo_weight + weight > 100:
+        print("  skipping: {}".format(cargo_name))
+        continue
+
+    else:
+        print("  adding: {}".format(cargo_name))
+        weight += cargo_weight
+        items.append(cargo_name)
+
+print("\nFinal Weight: {}".format(weight))
+print("Final Items: {}".format(items))
+
+'''
+output:
+my solution
+  adding: bananas
+  adding: mattresses
+  adding: dog kennels
+  skipping: machine
+  adding: cheeses
+
+Final Weight: 86
+Final Items: ['bananas', 'mattresses', 'dog kennels', 'cheeses']
+'''
+```
+
+## L4-29. Quiz: Break, Continue
+
+### Quiz: Break the String
+
+Write a loop with a `break` statement to create a string, `news_ticker`, that is exactly 140 characters long. You should create the news ticker by adding headlines from the `headlines` list, inserting a space in between each headline. If necessary, truncate the last headline in the middle so that `news_ticker` is exactly 140 characters long.
+
+Remember that `break` works in both `for` and `while` loops. Use whichever loop seems most appropriate. Consider adding `print` statements to your code to help you resolve bugs.
+
+- my solution:
+  - make sure the length of `news_ticker` never more than 140
+
+    ```py
+    # HINT: modify the headlines list to verify your loop works with different inputs
+    headlines = ["Local Bear Eaten by Man",
+                "Legislature Announces New Laws",
+                "Peasant Discovers Violence Inherent in System",
+                "Cat Rescues Fireman Stuck in Tree",
+                "Brave Knight Runs Away",
+                "Papperbok Review: Totally Triffic"]
+
+    news_ticker = ""
+    # write your loop here
+
+    for headline in headlines:
+        if (len(news_ticker) == 140):
+            break
+
+        elif (len(news_ticker) + len(headline) >= 140):
+            news_ticker += headline[:140-len(news_ticker)]
+            break
+
+        else:
+            news_ticker += headline + " "
+
+    print(news_ticker)
+    print(len(news_ticker))
+
+    '''
+    output:
+    Local Bear Eaten by Man Legislature Announces New Laws Peasant Discovers Violence Inherent in System Cat Rescues Fireman Stuck in Tree Brave
+    140
+    '''
+    ```
+
+- answer:
+  - concatenate first, then truncate it
+
+    ```py
+    headlines = ["Local Bear Eaten by Man",
+                "Legislature Announces New Laws",
+                "Peasant Discovers Violence Inherent in System",
+                "Cat Rescues Fireman Stuck in Tree",
+                "Brave Knight Runs Away",
+                "Papperbok Review: Totally Triffic"]
+
+    news_ticker = ""
+    for headline in headlines:
+        news_ticker += headline + " "
+        if len(news_ticker) >= 140:
+            news_ticker = news_ticker[:140]
+            break
+
+    print(news_ticker)
+    print(len(news_ticker))
+
+    '''
+    output:
+    Local Bear Eaten by Man Legislature Announces New Laws Peasant Discovers Violence Inherent in System Cat Rescues Fireman Stuck in Tree Brave
+    140
+    '''
+    ```
+
+## L4-31. Practice: Loops
+
+### Coding Quiz: Check for Prime Numbers
+
+Prime numbers are whole numbers that have only two factors: 1 and the number itself. The first few prime numbers are 2, 3, 5, 7.
+
+For instance, 6 has four factors: 1, 2, 3, 6.
+
+```
+1 X 6 = 6
+2 X 3 = 6
+```
+
+So we know 6 is not a prime number.
+
+In the following coding environment, write code to check if the numbers provided in the list `check_prime` are prime numbers.
+
+- If the numbers are prime, the code should print "[number] is a prime number."
+- If the number is NOT a prime number, it should print "[number] is not a prime number", and a factor of that number, other than 1 and the number itself: "[factor] is a factor of [number]".
+
+- **Example output:**
+
+    ```py
+    7 IS a prime number
+    26 is NOT a prime number, because 2 is a factor of 26
+    ```
+
+- my solution:
+  - the optimal range is from 2 to `sqrt(number)` or `2 <= x <= sqrt(number)`
+  - `number**(1/2)` means `sqrt(number)`
+  - `int()`: cut the number after decimal point(**not round off**)
+
+    ```py
+    print(int(1.6))  #  1
+    print(int(-1.6)) # -1
+    ```
+
+  - if `number` is 11, `int(number/2)` is 5, thus we have to add 1
+
+    ```py
+    ## Your code should check if each number in the list is a prime number
+    check_prime = [26, 39, 51, 53, 57, 79, 85]
+
+    ## write your code here
+    ## HINT: You can use the modulo operator to find a factor
+
+    for number in check_prime:
+        for i in range(2, int(number**(1/2)) + 1):
+            if (number%i == 0):
+                factor = i
+                print("{} is NOT a prime number, because {} is a factor of {}".format(number, factor, number))
+                break
+
+        else: # we can use for...else clause to reduce the use of flags
+            print("{} IS a prime number".format(number))
+
+    '''
+    output:
+    26 is NOT a prime number, because 2 is a factor of 26
+    39 is NOT a prime number, because 3 is a factor of 39
+    51 is NOT a prime number, because 3 is a factor of 51
+    53 IS a prime number
+    57 is NOT a prime number, because 3 is a factor of 57
+    79 IS a prime number
+    85 is NOT a prime number, because 5 is a factor of 85
+    '''
+    ```
+
+### for... else
+
+- purpose: reduce the use of unnecessary flag
+- before:
+
+    ```py
+    nums = [60, 70, 30, 110, 90]
+    found = False # the flag that can remove
+    for n in nums:
+        if n > 100:
+            found = True # the flag that can remove
+            print "There is a number bigger than 100"
+            break
+
+    if not found: # the expression that can remove
+        print "Not found!"
+    ```
+
+- after:
+
+    ```py
+    nums = [60, 70, 30, 110, 90]
+    for n in nums:
+        if n > 100:
+            print "There is a number bigger than 100"
+            break
+    else:
+        print "Not found!"
+    ```
+
+- ref: [[Python] Loop 配合 else 的妙用](https://note.pcwu.net/2017/02/26/python-loop-else/)
+
+## L4-33. Zip and Enumerate
+
+- `zip` and `enumerate` are useful built-in functions that can come in handy when dealing with loops.
+
+### Zip
+
+- `zip` returns an iterator that combines multiple iterables into one sequence of **tuples**.
+- Each tuple contains the elements in that position from all the iterables.
+
+    ```py
+    print(zip(['a', 'b', 'c'], [1, 2, 3])) # <zip object at 0x10b8a9dc8>
+
+    print(list(zip(['a', 'b', 'c'], [1, 2, 3]))) # [('a', 1), ('b', 2), ('c', 3)]
+    ```
+
+  - Like we did for `range()` we need to convert it to a list or iterate through it with a loop to see the elements.
+- we could **unpack** each tuple in a `for` loop
+
+    ```py
+    letters = ['a', 'b', 'c']
+    nums = [1, 2, 3]
+
+    for letter, num in zip(letters, nums):
+        print("{}: {}".format(letter, num))
+
+    '''
+    output:
+    a: 1
+    b: 2
+    c: 3
+    '''
+    ```
+
+- In addition to zipping two lists together, you can also **unzip** a list into tuples using an **asterisk**.
+
+    ```py
+    some_list = [('a', 1), ('b', 2), ('c', 3)]
+    letters, nums = zip(*some_list)
+
+    print(letters)  # ('a', 'b', 'c')
+    print(nums)     # (1, 2, 3)
+    ```
+
+### Enumerate
+
+- `enumerate` is a built in function that returns an iterator of tuples containing **indices** and values of a list.
+- We'll often use this when you want the index along with each element of an iterable in a loop.
+
+---
+
+- without enumerate:
+
+    ```py
+    letters = ['a', 'b', 'c', 'd', 'e']
+
+    for i, letter in zip(range(len(letters)), letters):
+        print(i, letter)
+    ```
+
+- with enumerate:
+
+    ```py
+    letters = ['a', 'b', 'c', 'd', 'e']
+    for i, letter in enumerate(letters):
+        print(i, letter)
+
+    '''
+    output:
+    0 a
+    1 b
+    2 c
+    3 d
+    4 e
+    '''
+    ```
+
 ## Vocabulary
 
 1. pay-as-you-go(PAYG) (n.) 現收現付
 2. concession ticket (n.) 優惠票
 3. succinct (adj.) 簡潔的
 4. blackjack dealer (n.) 賭場發牌手
+5. manifest (n.) 載貨單
+6. hummus (n.) 鷹嘴豆泥
+7. kennel (n.) 狗舍
 
-<!-- ## Reference
+## Reference
 
-1. [title](url) -->
+1. [loops - When to use "while" or "for" in Python - Stack Overflow](https://stackoverflow.com/questions/920645/when-to-use-while-or-for-in-python)
+2. [WhileLoop - Python Wiki](https://wiki.python.org/moin/WhileLoop)
+3. [[Python] Loop 配合 else 的妙用](https://note.pcwu.net/2017/02/26/python-loop-else/)
