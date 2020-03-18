@@ -69,8 +69,16 @@
       - [1. `point`](#1-point)
       - [2. `*point`](#2-point)
       - [3. `*point` with `foramt()`](#3-point-with-foramt)
+  - [L4-36. List Comprehensions](#l4-36-list-comprehensions)
+    - [Add If](#add-if)
+    - [Add Else](#add-else)
+  - [L4-37.Quiz: List Comprehensions](#l4-37quiz-list-comprehensions)
+    - [Quiz: Extract First Names](#quiz-extract-first-names)
+    - [Quiz: Multiples of Three](#quiz-multiples-of-three)
+    - [Quiz: Filter Names by Scores](#quiz-filter-names-by-scores)
   - [Vocabulary](#vocabulary)
   - [Reference](#reference)
+  - [Further Reading](#further-reading)
 
 </details>
 
@@ -1209,6 +1217,140 @@ J: 53 x 233
 '''
 ```
 
+## L4-36. List Comprehensions
+
+- In Python, we can create lists really quickly and concisely with list comprehensions.
+- list comprehensions allow us to create a list using a `for` loop in one step.
+- list comprehensions are not found in other languages, but are very common in Python
+
+---
+
+- without list comprehensions:
+
+    ```py
+    cities = ['new york city', 'mountain view', 'chicago', 'los angeles']
+
+    capitalized_cities = []
+
+    for city in cities:
+        capitalized_cities.append(city.title())
+    ```
+
+- with list comprehensions:
+
+    ```py
+    cities = ['new york city', 'mountain view', 'chicago', 'los angeles']
+
+    capitalized_cities = [city.title() for city in cities]
+
+    print(capitalized_cities) # ['New York City', 'Mountain View', 'Chicago', 'Los Angeles']
+    ```
+
+- another example without list comprehensions:
+
+    ```py
+    squares = []
+
+    for x in range(9):
+        squares.append(x**2)
+    ```
+
+### Add If
+
+- another example with list comprehensions:
+
+    ```py
+    squares = [x**2 for x in range(9)] # [0, 1, 4, 9, 16, 25, 36, 49, 64]
+    ```
+
+- we can also add conditionals to list comprehensions
+  - add conditionals before `]`
+
+    ```py
+    squares = [x**2 for x in range(9) if x%2 == 0] # [0, 4, 16, 36, 64]
+    ```
+
+### Add Else
+
+- if we want to add an `else`, we will get an syntax error like this:
+
+    ```py
+    squares = [x**2 for x in range(9) if x%2 == 0 else x+3] # SyntaxError: invalid syntax
+    ```
+
+- we have to move the conditionals at the beginning of the list comprehensions, right after the expression (`x**2`):
+
+    ```py
+    squares = [x**2 if x%2 == 0 else x+3 for x in range(9)] # [0, 4, 4, 6, 16, 8, 36, 10, 64]
+    ```
+
+## L4-37.Quiz: List Comprehensions
+
+### Quiz: Extract First Names
+
+Use a list comprehension to create a new list `first_names` containing just the first `names` in names in lowercase.
+
+- don't forget to add `[0]`
+
+```py
+names = ["Rick Sanchez", "Morty Smith", "Summer Smith", "Jerry Smith", "Beth Smith"]
+
+first_names = [name.lower().split(" ")[0] for name in names]
+print(first_names)
+
+'''
+output:
+['rick', 'morty', 'summer', 'jerry', 'beth']
+'''
+```
+
+### Quiz: Multiples of Three
+
+Use a list comprehension to create a list `multiples_3` containing the first 20 multiples of 3.
+
+- my solution:
+
+    ```py
+    multiples_3 = [x for x in range(1, 61, 1) if x%3 == 0]
+    print(multiples_3)
+
+    '''
+    output:
+    [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60]
+    '''
+    ```
+
+- answer:
+
+    ```py
+    multiples_3 = [x * 3 for x in range(1, 21)]
+    print(multiples_3)
+
+    '''
+    output:
+    [3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36, 39, 42, 45, 48, 51, 54, 57, 60]
+    '''
+    ```
+
+### Quiz: Filter Names by Scores
+
+Use a list comprehension to create a list of names `passed` that only include those that scored at least 65.
+
+- don't forget to use `.items()` method when use `for...in` loop in dictionaries
+
+```py
+scores = {
+             "Rick Sanchez": 70,
+             "Morty Smith": 35,
+             "Summer Smith": 82,
+             "Jerry Smith": 23,
+             "Beth Smith": 98
+          }
+
+passed = [name for name, score in scores.items() if score >= 65]
+print(passed)
+```
+
 ## Vocabulary
 
 1. pay-as-you-go(PAYG) (n.) 現收現付
@@ -1218,10 +1360,14 @@ J: 53 x 233
 5. manifest (n.) 載貨單
 6. hummus (n.) 鷹嘴豆泥
 7. kennel (n.) 狗舍
+8. start off (phr.) 出發
 
 ## Reference
 
 1. [loops - When to use "while" or "for" in Python - Stack Overflow](https://stackoverflow.com/questions/920645/when-to-use-while-or-for-in-python)
 2. [WhileLoop - Python Wiki](https://wiki.python.org/moin/WhileLoop)
 3. [[Python] Loop 配合 else 的妙用](https://note.pcwu.net/2017/02/26/python-loop-else/)
-4. [Understanding the asterisk(*) of Python - Understanding the Python - Medium](https://medium.com/understand-the-python/understanding-the-asterisk-of-python-8b9daaa4a558)
+
+## Further Reading
+
+1. [Understanding the asterisk(*) of Python - Understanding the Python - Medium](https://medium.com/understand-the-python/understanding-the-asterisk-of-python-8b9daaa4a558)
