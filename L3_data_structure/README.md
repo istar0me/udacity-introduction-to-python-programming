@@ -668,6 +668,7 @@ print(room_numbers[('Eugene', 'Zach')]) # 395
 2. reticulate (adj.) 網狀的
 3. aft (n.) 船尾
 4. YTD (abbr.) = Year To Date 到現在為止的一年
+5. dice (v.) 切成方塊
 
 <!-- ## Reference -->
 
