@@ -1249,6 +1249,8 @@ J: 53 x 233
     print(capitalized_cities) # ['New York City', 'Mountain View', 'Chicago', 'Los Angeles']
     ```
 
+### Add If
+
 - another example without list comprehensions:
 
     ```py
@@ -1257,8 +1259,6 @@ J: 53 x 233
     for x in range(9):
         squares.append(x**2)
     ```
-
-### Add If
 
 - another example with list comprehensions:
 
