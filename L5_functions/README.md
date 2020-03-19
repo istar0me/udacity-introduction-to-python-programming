@@ -45,7 +45,7 @@ output:
 - following `def` is the name of the function `cylinder_volumes`
   - this needs one word with no gaps
   - the rules for function names are the same as those for variable names ([snake case](../L2_data_types_and_operators/README.md#snake-case))
-- after the function namea are parentheses that includes the arguments `height` and `radius`, separated by commas
+- after the function name are parentheses that includes the arguments `height` and `radius`, separated by commas
   - **argument**: values passed in as input to a function
 
 ---
