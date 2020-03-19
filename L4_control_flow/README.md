@@ -93,12 +93,12 @@
 
 - Control flow: the sequence in which your code is run.
 - we'll learn about several tools in Python:
-  - Conditional Statements
-  - Boolean Expressions
-  - For and While Loops
-  - Break and Continue
-  - Zip and Enumerate
-  - List Comprehensions
+  - [Conditional Statements](#l4-2-conditional-statements)
+  - [Boolean Expressions]((#l4-7-boolean-expressions-for-conditions))
+  - [For](#l4-10-for-loops) and [While Loops](#l4-20-while-loops)
+  - [Break and Continue]((#l4-28-break-continue))
+  - [Zip](#zip) and [Enumerate](#enumerate)
+  - [List Comprehensions](#l4-36-list-comprehensions)
 
 ## L4-2. Conditional Statements
 
