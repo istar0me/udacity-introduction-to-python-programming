@@ -5,9 +5,22 @@
   - [L5-2. Defining Functions](#l5-2-defining-functions)
     - [Defining Functions](#defining-functions)
       - [Function Header](#function-header)
+        - [parameter vs. arguments](#parameter-vs-arguments)
       - [Function Body](#function-body)
     - [Default Arguments](#default-arguments)
+  - [L5-6. Variable Scope](#l5-6-variable-scope)
+    - [Local Variable](#local-variable)
+    - [Global Variable](#global-variable)
+    - [More on Variable Scope](#more-on-variable-scope)
+  - [L5-7. Quiz: Variable Scope](#l5-7-quiz-variable-scope)
+  - [L5-8. Solution: Variable Scope](#l5-8-solution-variable-scope)
+  - [L5-9. Check For Understanding: Variable Scope](#l5-9-check-for-understanding-variable-scope)
+    - [Check for Understanding](#check-for-understanding)
+    - [Q1](#q1)
+    - [Q3](#q3)
+    - [Q4](#q4)
   - [Vocabulary](#vocabulary)
+  - [Reference](#reference)
   - [Further Reading](#further-reading)
 
 ---
@@ -48,13 +61,31 @@ output:
 - after the function name are parentheses that includes the arguments `height` and `radius`, separated by commas
   - **argument**: values passed in as input to a function
 
+##### parameter vs. arguments
+
+- warning: the class doesn't classify the differences between **(formal) parameters** and **(actual) arguments**, click [here](https://developer.mozilla.org/zh-TW/docs/Glossary/Parameter) for more details
+  - A parameter is a named variable passed into a function.
+  - Parameter variables are used to import arguments into functions.
+
+```py
+def cal_bmi(weight, height): # parameter = weight, height
+    return weight / ((height/100)**2)
+
+print(cal_bmi(50, 165)) # argument = 50, 165
+
+'''
+output:
+18.36547291092746
+'''
+```
+
 ---
 
 #### Function Body
 
 - the body of function is indented after the header and is where the function does its work
   - **local variable**: can only be used within the body of its function
-  - **variable scope**: determines which variables you have access to
+  - [**variable scope**](#l5-6-variable-scope): determines which variables you have access to
 - the body of function will often include `return` keyword, it's used to give back an output value when the function is called
 - Rather than returning the value as it is calculated, an alternative technique would be to calculate the value earlier and then store it in a variable
   - before
@@ -135,14 +166,170 @@ print(cylinder_volumes(10, 7)) # 1539.3791
         print(cylinder_volumes(radius = 7, height = 10)) # it's also acceptable
         ```
 
+## L5-6. Variable Scope
+
+- **variable scope**: the parts of program that a variable can be referenced, or used from
+
+### Local Variable
+
+- if a variable is created inside function, it can only be used within that function
+
+    ```py
+    def show_number():
+        number = 10
+        print(number) # 10
+
+    show_number()
+    print(number) # NameError: name 'number' is not defined
+    ```
+
+### Global Variable
+
+- alternatively, we might have a variable defined outside of functions
+
+    ```py
+    number = 10
+
+    def show_number():
+        print(number) # 10
+
+    show_number()
+    print(number) # 10
+    ```
+
+- the value of a global variable can **NOT be moditfied** inside the function, see [L5-7. Quiz: Variable Scope](#l5-7-quiz-variable-scope) for the details
+
+### More on Variable Scope
+
+- reusing names for objects is OK as long as you keep them in separate scope
+- **good practice**: define variables in the smallest scope they will be needed in
+
+## L5-7. Quiz: Variable Scope
+
+Read through this code snippet:
+
+```py
+egg_count = 0
+
+def buy_eggs():
+    egg_count += 12 # purchase a dozen eggs
+
+buy_eggs()
+```
+
+What is the result of running this code? If you aren't sure, try running it on your own computer!
+
+| answer | option                  |
+| ------ | ----------------------- |
+|        | `egg_count` equals zero |
+|        | `egg_count` equals 12   |
+| (O)    | An error occurs         |
+
+- output:
+
+    ```py
+    UnboundLocalError: local variable 'egg_count' referenced before assignment
+    ```
+
+- reason:
+  - Python doesn't allow functions to modify variables that are outside the function's scope
+  - A better way would be to pass the variable as an argument and reassign it outside the function
+
+## L5-8. Solution: Variable Scope
+
+- If we try to **change** or **reassign** global variable inside function, we get an error
+- Python doesn't allow functions to modify variables that aren't in the function's scope
+- A better way to write this would be:
+  - pass the variable as an argument and reassign it outside the function
+
+    ```py
+    egg_count = 0
+
+    def buy_eggs(count):
+        return count + 12 # don't modify global variable
+
+    egg_count = buy_eggs(egg_count)
+    ```
+
+## L5-9. Check For Understanding: Variable Scope
+
+### Check for Understanding
+
+It is important to understand variable scope, as this often can lead to confusion when writing code that solves complex problems.
+
+### Q1
+
+Use the code below to determine what will print to the console.
+
+```py
+str1 = 'Functions are important programming concepts.'
+
+def print_fn():
+    str1 = 'Variable scope is an important concept.'
+    print(str1)
+
+print_fn()
+```
+
+What will happen when we run this code?
+
+| answer | option                                                        | reason                    |
+| ------ | ------------------------------------------------------------- | ------------------------- |
+| (O)    | It will print 'Variable scope is an important concept.'       | we use the local variable |
+|        | It will print 'Functions are important programming concepts.' |                           |
+| (X)    | It will give a ValueError.                                    |                           |
+
+### Q3
+
+We made another tweak to the code.
+
+```py
+def print_fn():
+    str1 = 'Variable scope is an important concept.'
+    print(str1)
+
+print_fn(str1)
+```
+
+What do you think will happen when we run this code?
+
+| answer | option                                                                            | reason |
+| ------ | --------------------------------------------------------------------------------- | ------ |
+| (O)    | It will give a TypeError: print_fn() takes 0 positional arguments but 1 was given |        |
+| (X)    | It will print 'Variable scope is an important concept.'                           |        |
+|        | It will print nothing.                                                            |        |
+
+### Q4
+
+We made a final tweak to the code.
+
+```py
+str1 = 'Functions are important programming concepts.'
+
+def print_fn():
+    print(str1)
+
+print_fn(str1)
+```
+
+Now what do you think will happen?
+
+| answer | option                                                                              | reason |
+| ------ | ----------------------------------------------------------------------------------- | ------ |
+| (O)    | It still gives a TypeError: print_fn() takes 0 positional arguments but 1 was given |        |
+| (X)    | It will print 'Functions are important programming concepts'                        |        |
+|        | It will not print anything.                                                         |        |
+
+- conclusion: As long as the function definition did not include any parameters, call function with arguments will give an error
+
 ## Vocabulary
 
 1. cylinder (n.) 圓柱體
 2. nuance (n.) 細微差別
 
-<!-- ## Reference
+## Reference
 
-1. [title](url) -->
+1. [Parameter - MDN Web Docs Glossary: Definitions of Web-related terms | MDN](https://developer.mozilla.org/zh-TW/docs/Glossary/Parameter)
 
 ## Further Reading
 
