@@ -1,5 +1,8 @@
 # Functions
 
+<details><summary>Outline</summary>
+<Dropdown Content>
+
 - [Functions](#functions)
   - [L5-1. Introduction](#l5-1-introduction)
   - [L5-2. Defining Functions](#l5-2-defining-functions)
@@ -22,6 +25,8 @@
   - [Vocabulary](#vocabulary)
   - [Reference](#reference)
   - [Further Reading](#further-reading)
+
+</details>
 
 ---
 
@@ -63,7 +68,7 @@ output:
 
 ##### parameter vs. arguments
 
-- warning: the class doesn't classify the differences between **(formal) parameters** and **(actual) arguments**, click [here](https://developer.mozilla.org/zh-TW/docs/Glossary/Parameter) for more details
+- warning: the class doesn't clarify the differences between **(formal) parameters** and **(actual) arguments**, click [here](https://developer.mozilla.org/zh-TW/docs/Glossary/Parameter) for more details
   - A parameter is a named variable passed into a function.
   - Parameter variables are used to import arguments into functions.
 
