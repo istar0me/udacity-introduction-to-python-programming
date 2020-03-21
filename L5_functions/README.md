@@ -291,11 +291,11 @@ print_fn()
 
 What will happen when we run this code?
 
-| answer | option                                                        | reason                    |
-| ------ | ------------------------------------------------------------- | ------------------------- |
-| (O)    | It will print 'Variable scope is an important concept.'       | we use the local variable |
-|        | It will print 'Functions are important programming concepts.' |                           |
-| (X)    | It will give a ValueError.                                    |                           |
+| answer | option                                                        | reason                                                |
+| ------ | ------------------------------------------------------------- | ----------------------------------------------------- |
+| (O)    | It will print 'Variable scope is an important concept.'       | we use the local variable rather than global variable |
+|        | It will print 'Functions are important programming concepts.' |                                                       |
+| (X)    | It will give a ValueError.                                    |                                                       |
 
 ### Q3
 
@@ -421,7 +421,7 @@ Write a docstring for the `readable_timedelta` function you defined earlier! Rem
 - We can use lambda expressions to create anonymous functions.
   - That is, functions that don’t have a name.
   - helpful for creating quick functions that aren’t needed later in your code.
-- **higher-order functions**: functions taht take in other functions as arguments, where lambda expressions becom especially useful
+- **higher-order functions**: functions taht take in other functions as arguments, where lambda expressions become especially useful
 
 ### standard function vs. lambda expression
 
@@ -474,6 +474,7 @@ Rewrite this code to be more concise by replacing the `mean` function with a lam
 
 - answer:
   - we don't need a separate `mean` variable
+  - using the short variable name like `x`
 
   ```py
   averages = list(map(lambda x: sum(x) / len(x), numbers))
@@ -498,7 +499,9 @@ Rewrite this code to be more concise by replacing the `is_short` function with a
   print(short_cities)
   ```
 
-- just like the example above, we don't need `is_short` variable
+- answer:
+  - just like the example above, we don't need `is_short` variable
+  - using the short variable name like `x`
 
   ```py
   short_cities = list(filter(lambda x: len(x) < 10, cities))
