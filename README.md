@@ -15,6 +15,7 @@
 
 1. [Python Programming Language - GeeksforGeeks](https://www.geeksforgeeks.org/python-programming-language/)
 2. [Python Tutorial](https://www.w3schools.com/python/default.asp)
+3. [Learn Python Programming | Programiz](https://www.programiz.com/python-programming)
 
 ## Practice
 
