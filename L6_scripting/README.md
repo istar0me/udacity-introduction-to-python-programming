@@ -1,7 +1,7 @@
 # Scripting
 
-<!-- <details><summary>Outline</summary>
-<Dropdown Content> -->
+<details><summary>Outline</summary>
+<Dropdown Content>
 
 - [Scripting](#scripting)
   - [L6-1. Introduction](#l6-1-introduction)
@@ -22,7 +22,7 @@
   - [Vocabulary](#vocabulary)
   - [Further Reading](#further-reading)
 
-<!-- </details> -->
+</details>
 
 ---
 
@@ -251,11 +251,11 @@ Write a script that does the following:
   ```
 
 - note
-  - we have to `.title()` before `.split(',')`
+  - we have to do `.title()` before `.split(',')`
     - the type of `names` is `str` before `.split(',')`, otherwise is `list`
   - `.split(',')`: separated by commas
   - `zip(names, assignments, grades)`: it's useful to use `zip()` here
-  - `int(grade) + int(assignment)*2`: we should convert `assignment` to int at first, otherwise it will repeats the string of `assignment` two times
+  - `int(grade) + int(assignment)*2`: we should convert `assignment` to `int` at first, otherwise it will repeats the string of `assignment` two times
 
 - input: [message.input](code/message/message.input)
 
@@ -343,7 +343,7 @@ Write a script that does the following:
   ValueError: invalid literal for int() with base 10: 'ten'
   ```
 
-- `ValueError` occurs when a built-in operation or function is given an argument with the correct type but an inappropriate value
+  - `ValueError` occurs when a built-in operation or function is given an argument with the correct type but an inappropriate value
 
 - file: [exceptions_demo2.py](code/errors_and_exceptions/exceptions_demo2.py)
 
