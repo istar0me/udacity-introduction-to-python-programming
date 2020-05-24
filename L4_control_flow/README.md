@@ -10,7 +10,7 @@
     - [if](#if)
     - [if...else...](#ifelse)
     - [elif](#elif)
-    - [`=` vs. `==`](#vs)
+    - [`=` vs. `==`](#-vs-)
     - [Indentation](#indentation)
       - [Spaces or Tabs?](#spaces-or-tabs)
   - [L4-7. Boolean Expressions for Conditions](#l4-7-boolean-expressions-for-conditions)
@@ -370,7 +370,7 @@ for token in tokens:
 print(count) # 2
 ```
 
-- if we don't want to use `str.startswith()` and `str.endswith` method, we can use the method 2.
+- if we don't want to use `str.startswith()` and `str.endswith()` method, we can use the method 2.
 
     ```py
     method 1:
@@ -396,6 +396,7 @@ print(count) # 2
 
 ```py
 print(list(range(0, -5)))       # []
+print(list(range(0, -5, 1)))    # []
 print(list(range(0, -5, -1)))   # [0, -1, -2, -3, -4]
 ```
 
@@ -510,7 +511,7 @@ hand = []
 
 # adds the last element of the card_deck list to the hand list
 # until the values in hand add up to 17 or more
-while sum(hand)  < 17:
+while sum(hand) < 17:
     hand.append(card_deck.pop())
     print(sum(hand))
 
@@ -613,7 +614,7 @@ For example, if `limit` is 40, your code should set the `nearest_square` to 36.
     limit = 40
 
     num = 0 # start from 0
-    while (num+1)**2 < limit: ## +1 is the key point
+    while (num+1)**2 < limit: # +1 is the key point
         num += 1
     nearest_square = num**2
 
@@ -643,7 +644,7 @@ For example, if `limit` is 40, your code should set the `nearest_square` to 36.
     # use comparison operators
     while count <= 100:
 
-    # When you want to
+    # when you want to
     # loop based on receiving specific user input.
     while user_input == 'y':
     ```
@@ -865,7 +866,7 @@ In the following coding environment, write code to check if the numbers provided
     print(int(-1.6)) # -1
     ```
 
-  - if `number` is 11, `int(number/2)` is 5, thus we have to add 1
+  - if `number` is 11, `int(number**(1/2))` is 3, thus we have to add 1
 
     ```py
     ## Your code should check if each number in the list is a prime number
