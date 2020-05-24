@@ -271,10 +271,10 @@ print(student)  # Jim
 
   ```py
   names = ["Garcia", "O'Kelly", "Davis"]
-  print("-",join(names)) # Garcia-O'Kelly-Davis
+  print("-".join(names)) # Garcia-O'Kelly-Davis
   ```
 
-- Although forgetting to add comma will not trigger an error, but will give an unexpected results
+- Although forgetting to add period will not trigger an error, but will give an unexpected results
   - this happens bacause of Python's default string literal appending
 
   ```py
