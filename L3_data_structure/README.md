@@ -460,7 +460,7 @@ print(tuple_a == tuple_b) # True
   ```
 
 - `keys()` and `values`: return a list of all the keys/values in the dictionary
-  - loot at the last line, it's sorted by the values(county name), not by the keys(rank)
+  - look at the last line, it's sorted by the values(county name), not by the keys(rank)
 
 ```py
 jp_population_rank = {'3': 'osaka', '1': 'tokyo', '2': 'kanagawa'}
@@ -476,7 +476,7 @@ print(sorted(jp_population_rank.values())) # ['kanagawa', 'osaka', 'tokyo']
 
 ![identity_operators](img/L2&#32;24&#32;Dictionaries&#32;And&#32;Identiy&#32;Operators&#32;V4&#32;2-18&#32;screenshot.png)
 
-- we can check if a key return none with `is` operator, or the opposite `it not` operator
+- we can check if a key return none with `is` operator, or the opposite `is not` operator
 
   ```py
   elements = {'hydrogen': 1, 'helium': 2, 'carbon': 6}
