@@ -31,7 +31,7 @@
     - [Quiz: Lambda with Map](#quiz-lambda-with-map)
     - [Quiz: Lambda with Filter](#quiz-lambda-with-filter)
     - [doc](#doc)
-      - [map(function, iterable, ...)](#mapfunction-iterable)
+      - [map(function, iterable, ...)](#mapfunction-iterable-)
       - [filter(function, iterable)](#filterfunction-iterable)
   - [L5-16. Conclusion](#l5-16-conclusion)
     - [What's Next?](#whats-next)
@@ -309,7 +309,7 @@ def print_fn():
 print_fn(str1)
 ```
 
-What do you think will happen when we run this code?
+What do you think what will happen when we run this code?
 
 | answer | option                                                                            | reason |
 | ------ | --------------------------------------------------------------------------------- | ------ |
@@ -421,7 +421,7 @@ Write a docstring for the `readable_timedelta` function you defined earlier! Rem
 - We can use lambda expressions to create anonymous functions.
   - That is, functions that don’t have a name.
   - helpful for creating quick functions that aren’t needed later in your code.
-- **higher-order functions**: functions taht take in other functions as arguments, where lambda expressions become especially useful
+- **higher-order functions**: functions that take in other functions as arguments, where lambda expressions become especially useful
 
 ### standard function vs. lambda expression
 

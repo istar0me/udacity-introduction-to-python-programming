@@ -941,6 +941,8 @@ In the following coding environment, write code to check if the numbers provided
     ```py
     print(zip(['a', 'b', 'c'], [1, 2, 3])) # <zip object at 0x10b8a9dc8>
 
+    print(*zip(['a', 'b', 'c'], [1, 2, 3])) # ('a', 1) ('b', 2) ('c', 3)
+
     print(list(zip(['a', 'b', 'c'], [1, 2, 3]))) # [('a', 1), ('b', 2), ('c', 3)]
     ```
 
@@ -1390,7 +1392,7 @@ winners = {1931: ['Norman Taurog'], 1932: ['Frank Borzage'], 1933: ['Frank Lloyd
     ```
 
 - 1B. Provide a dictionary with the count of Oscar wins for each director in the winners list.
-  - warning: there's not only one winner a year sometimes
+  - **warning**: there's not only one winner a year sometimes
 
   ```py
   1961: ['Jerome Robbins', 'Robert Wise']
@@ -1419,9 +1421,9 @@ winners = {1931: ['Norman Taurog'], 1932: ['Frank Borzage'], 1933: ['Frank Lloyd
 
     ```py
     if not win_count_dict.get(winner, None):
-                    win_count_dict[winner] = 1
-                else:
-                    win_count_dict[winner] += 1
+        win_count_dict[winner] = 1
+    else:
+        win_count_dict[winner] += 1
     ```
 
     - after
@@ -1464,7 +1466,7 @@ Provide a list with the name(s) of the director(s) with the most Oscar wins. We 
     ```
 
 - second shot:
-  - `most_win_index` can be wrote shorter
+  - ~~`most_win_index` can be wrote shorter~~
     - before
 
         ```py
@@ -1473,7 +1475,7 @@ Provide a list with the name(s) of the director(s) with the most Oscar wins. We 
         most_win_index = [index for index, count in enumerate(win_count) if count == max(win_count)]
         ```
 
-    - after
+    - ~~after~~ (if there's more than 1 most_win_index, the code below will only show the first match index)
 
         ```py
         most_win_index = max(win_count_dict.values())
@@ -1505,7 +1507,8 @@ Provide a list with the name(s) of the director(s) with the most Oscar wins. We 
         for winner in winner_list:
             win_count_dict[winner] = win_count_dict.get(winner, 0) + 1
 
-    most_win_index = max(win_count_dict.values())
+    # most_win_index = max(win_count_dict.values())
+    most_win_index = [index for index, count in enumerate(win_count) if count == max(win_count)]
     most_win_director = [name for name, count in win_count_dict.items() if count == most_win_index]
 
     print("most_win_director = {}".format(most_win_director))
