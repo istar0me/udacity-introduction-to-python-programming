@@ -45,6 +45,14 @@
       - [readlines([sizehint[, keepends]])](#readlinessizehint-keepends)
       - [str.strip([chars])](#strstripchars)
   - [L6-20. Quiz: Practice Debugging](#l6-20-quiz-practice-debugging)
+  - [L6-22. Importing Local Scripts](#l6-22-importing-local-scripts)
+    - [Importing Local Scripts](#importing-local-scripts)
+    - [Using a main block](#using-a-main-block)
+    - [Example](#example)
+  - [L6-23. The Standard Library](#l6-23-the-standard-library)
+  - [L6-24. Quiz: The Standard Library](#l6-24-quiz-the-standard-library)
+    - [Quiz: Compute an Exponent](#quiz-compute-an-exponent)
+    - [Quiz: Password Generator](#quiz-password-generator)
   - [Vocabulary](#vocabulary)
   - [Further Reading](#further-reading)
 
@@ -858,7 +866,7 @@ f.close()
   ```
 
 - output
-  - every elements except for last element will have a trailing `\n`
+  - every elements except for the last element will have a trailing `\n`
 
   ```
   ["We're the knights of the round table\n", "We dance whenever we're able"]
@@ -1038,6 +1046,245 @@ f.close()
   | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
   | UnboundLocalError | You are trying to access a local variable before it is defined. Make sure local scope of variable in function is defined or value assigned to it. |
 
+## L6-22. Importing Local Scripts
+
+### Importing Local Scripts
+
+- importing python script from other files is useful when working on a bigger project
+- format: `import` followed by the name of the file, without the `.py` extension
+
+  ```py
+  import useful_functions
+  ```
+
+- Conventionally, we write `import` statement at the top of the file
+- Import statement will create a module object
+  - Modules are just Python files that contain definitions and statements.
+  - To access objects from an imported module, you need to use dot notation
+
+  ```py
+  import useful_functions
+  useful_functions.add_five([1, 2, 3, 4])
+  ```
+
+- we can add an alias by using `as` statment
+
+  ```py
+  import useful_functions as uf
+  ```
+
+### Using a main block
+
+- Whenever we run a script like this, Python actually sets a special built-in variable called `__name__` for any module
+  - When we run a script, Python recognizes this module as the main program, and sets the `__name__` variable for this module to the string `"__main__"`.
+  - For any modules that are imported in this script, this built-in `__name__` variable is just set to the name of that module.
+- Therefore, the condition if `__name__ == "__main__"` is just checking whether this module is the main program.
+
+### Example
+
+- file: [demo.py](code/import/demo.py)
+
+  ```py
+  import useful_functions as uf
+
+  scores = [88, 92, 79, 93, 85]
+
+  mean = uf.mean(scores)
+  curved = uf.add_five(scores)
+
+  mean_c = uf.mean(curved)
+
+  print("Scores:", scores)
+  print("Original Mean:", mean, " New Mean:", mean_c)
+
+  print(__name__)     # __main__
+  print(uf.__name__)  # useful_functions
+  ```
+
+- output
+
+  ```
+  Scores: [88, 92, 79, 93, 85]
+  Original Mean: 87.4  New Mean: 92.4
+  __main__
+  useful_functions
+  ```
+
+- file: [useful_functions.py](code/import/useful_functions.py)
+
+  ```py
+  def mean(num_list):
+      return sum(num_list) / len(num_list)
+
+
+  def add_five(num_list):
+      return [n + 5 for n in num_list]  # list comprehension
+
+
+  def main():
+      print("Testing mean function")
+      n_list = [34, 44, 23, 46, 12, 24]
+      correct_mean = 30.5
+      assert(mean(n_list) == correct_mean)
+
+      print("Testing add_five function")
+      correct_list = [39, 49, 28, 51, 17, 29]
+      assert(add_five(n_list) == correct_list)
+
+      print("All tests passed!")
+
+
+  if __name__ == '__main__':  # only execute when we run 'useful_functions.py'
+      main()
+  ```
+
+- output
+
+  ```
+  Testing mean function
+  Testing add_five function
+  All tests passed!
+  ```
+
+## L6-23. The Standard Library
+
+- [The Python Standard Library](https://docs.python.org/3/library/)
+- we can discover new modules at the [Python Module of the Week](https://pymotw.com/3/) blog
+
+## L6-24. Quiz: The Standard Library
+
+### Quiz: Compute an Exponent
+
+- It's your turn to import and use the `math` module. Use the `math` module to calculate `e` to the power of 3. `print` the answer.
+- Refer to the [math module's documentation](https://docs.python.org/3.6/library/math.html?highlight=math%20module#module-math) to find the function you need!
+- 
+
+  ```py
+  import math
+
+  # print e to the power of 3 using the math module
+  print(math.exp(3))          # 20.085536923187668 (more precise)
+  print(math.pow(math.e, 3))  # 20.085536923187664
+  ```
+
+### Quiz: Password Generator
+
+- Write a function called `generate_password` that selects three random words from the list of words `word_list` and concatenates them into a single string.
+- Your function should not accept any arguments and should reference the global variable `word_list` to build the password.
+
+- file: words.txt
+
+  <details><summary>click here to see words.txt</summary>
+
+  <Dropdown Content>
+
+  ```
+  Alice
+  was
+  beginning
+  to
+  get
+  very
+  tired
+  of
+  sitting
+  by
+  her
+  sister
+  bank
+  having
+  nothing
+  Once
+  twice
+  she
+  had
+  peeped
+  into
+  the
+  book
+  her
+  sister
+  was
+  reading
+  but
+  it
+  had
+  no
+  pictures
+  or
+  conversations
+  in
+  it
+  and
+  what
+  is
+  the
+  use
+  of
+  a
+  book
+  thought
+  Alice
+  without
+  pictures
+  or
+  conversations
+  ```
+  </details>
+
+- my solution: password_generator.py
+
+  ```py
+  # Use an import statement at the top
+  import random
+
+  word_file = "words.txt"
+  word_list = []
+
+  #fill up the word_list
+  with open(word_file,'r') as words:
+    for line in words:
+      # remove white space and make everything lowercase
+      word = line.strip().lower()
+      # don't include words that are too long or too short
+      if 3 < len(word) < 8:
+        word_list.append(word)
+
+  # Add your function generate_password here
+  # It should return a string consisting of three random words 
+  # concatenated together without spaces
+  def generate_password():
+      password = ""
+      for _ in range(0,3):
+          password += random.choice(word_list)
+      return password
+
+
+  # test your function
+  print(generate_password())
+  ```
+
+- key method:
+
+  ```py
+  random.choice(word_list)
+  ```
+
+- answer 1:
+
+  ```py
+  def generate_password():
+      return random.choice(word_list) + random.choice(word_list) + random.choice(word_list)
+  ```
+
+- answer 2:
+  - use the [`random.sample`](https://docs.python.org/3.6/library/random.html#random.sample) function and `.join` method for strings
+
+  ```py
+  def generate_password():
+      return ''.join(random.sample(word_list,3))
+  ```
+
 ## Vocabulary
 
 1. tautology (n.) 贅述
@@ -1052,3 +1299,4 @@ f.close()
 2. [Writing READMEs | Udacity](https://www.udacity.com/course/writing-readmes--ud777)
 3. [Version Control with Git | Udacity](https://www.udacity.com/course/version-control-with-git--ud123)
 4. [Why do we need the finally clause in Python?](https://stackoverflow.com/questions/11551996/why-do-we-need-the-finally-clause-in-python#)
+5. [Python | assert keyword - GeeksforGeeks](https://www.geeksforgeeks.org/python-assert-keyword/)
