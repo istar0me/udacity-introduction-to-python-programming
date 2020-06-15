@@ -40,7 +40,7 @@
       - [f.readlines()](#freadlines)
     - [Quiz: Flying Circus Cast List](#quiz-flying-circus-cast-list)
     - [doc](#doc)
-      - [read([size[, chars[, firstline]]])¶](#readsize-chars-firstline)
+      - [read([size[, chars[, firstline]]])](#readsize-chars-firstline)
       - [readline([size[, keepends]])](#readlinesize-keepends)
       - [readlines([sizehint[, keepends]])](#readlinessizehint-keepends)
       - [str.strip([chars])](#strstripchars)
@@ -1014,7 +1014,7 @@ f.close()
 
 ### doc
 
-#### read([size[, chars[, firstline]]])¶
+#### read([size[, chars[, firstline]]])
 
 - [read([size[, chars[, firstline]]])](https://docs.python.org/3/library/codecs.html?highlight=readlines#codecs.StreamReader.read)
 
@@ -1034,9 +1034,9 @@ f.close()
 
 - The following are some common exceptions. Again, "exceptions" are errors detected during execution.
 
-  EXAMPLE EXCEPTION | HOW WOULD YOU TRY TO HANDLE THE EXCEPTION?
-  - | -
-  UnboundLocalError | You are trying to access a local variable before it is defined. Make sure local scope of variable in function is defined or value assigned to it.
+  | EXAMPLE EXCEPTION | HOW WOULD YOU TRY TO HANDLE THE EXCEPTION?                                                                                                        |
+  | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | UnboundLocalError | You are trying to access a local variable before it is defined. Make sure local scope of variable in function is defined or value assigned to it. |
 
 ## Vocabulary
 
