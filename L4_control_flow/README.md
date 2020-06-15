@@ -908,11 +908,11 @@ In the following coding environment, write code to check if the numbers provided
     for n in nums:
         if n > 100:
             found = True # the flag that can remove
-            print "There is a number bigger than 100"
+            print("There is a number bigger than 100")
             break
 
     if not found: # the expression that can remove
-        print "Not found!"
+        print("Not found!")
     ```
 
 - after:
@@ -921,10 +921,10 @@ In the following coding environment, write code to check if the numbers provided
     nums = [60, 70, 30, 110, 90]
     for n in nums:
         if n > 100:
-            print "There is a number bigger than 100"
+            print("There is a number bigger than 100")
             break
     else:
-        print "Not found!"
+        print("Not found!")
     ```
 
 - ref: [[Python] Loop 配合 else 的妙用](https://note.pcwu.net/2017/02/26/python-loop-else/)
