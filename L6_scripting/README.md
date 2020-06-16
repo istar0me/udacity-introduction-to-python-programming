@@ -53,6 +53,24 @@
   - [L6-24. Quiz: The Standard Library](#l6-24-quiz-the-standard-library)
     - [Quiz: Compute an Exponent](#quiz-compute-an-exponent)
     - [Quiz: Password Generator](#quiz-password-generator)
+  - [L6-26. Techniques for Importing Modules](#l6-26-techniques-for-importing-modules)
+    - [Techniques for Importing Modules](#techniques-for-importing-modules)
+    - [Modules, Packages, and Names](#modules-packages-and-names)
+  - [L6-27. Quiz: Techniques for Importing Modules](#l6-27-quiz-techniques-for-importing-modules)
+    - [Importing and accessing from modules](#importing-and-accessing-from-modules)
+  - [L6-28. Third-Party Libraries](#l6-28-third-party-libraries)
+    - [Third-Party Libraries](#third-party-libraries)
+    - [Using a `requirements.txt` File](#using-a-requirementstxt-file)
+    - [Useful Third-Party Packages](#useful-third-party-packages)
+  - [L6-29. Experimenting with an Interpreter](#l6-29-experimenting-with-an-interpreter)
+    - [Experimenting With An Interpreter](#experimenting-with-an-interpreter)
+    - [IPython](#ipython)
+  - [L6-30. Online Resources](#l6-30-online-resources)
+    - [Getting the information you need to know](#getting-the-information-you-need-to-know)
+    - [How to Search](#how-to-search)
+    - [Hierarchy of Online Resources](#hierarchy-of-online-resources)
+  - [L6-31. Practice Question](#l6-31-practice-question)
+    - [Practice Question](#practice-question)
   - [Vocabulary](#vocabulary)
   - [Further Reading](#further-reading)
 
@@ -1157,7 +1175,6 @@ f.close()
 
 - It's your turn to import and use the `math` module. Use the `math` module to calculate `e` to the power of 3. `print` the answer.
 - Refer to the [math module's documentation](https://docs.python.org/3.6/library/math.html?highlight=math%20module#module-math) to find the function you need!
-- 
 
   ```py
   import math
@@ -1285,9 +1302,316 @@ f.close()
       return ''.join(random.sample(word_list,3))
   ```
 
+## L6-26. Techniques for Importing Modules
+
+### Techniques for Importing Modules
+
+- There are other variants of import statements that are useful in different situations.
+
+1. To import an individual function or class from a module:
+
+  ```py
+  from module_name import object_name
+  ```
+
+2. To import multiple individual objects from a module:
+
+  ```py
+  from module_name import first_object, second_object
+  ```
+
+3. To rename a module:
+
+  ```py
+  import module_name as new_name
+  ```
+
+4. To import an object from a module and rename it:
+
+  ```py
+  from module_name import object_name as new_name
+  ```
+
+5. To import every object individually from a module (**DO NOT DO THIS**):
+
+  ```py
+  from module_name import *
+  ```
+
+6. If you really want to use all of the objects from a module, use the standard import module_name statement instead and access each of the objects with the dot notation.
+
+  ```py
+  import module_name
+  ```
+
+### Modules, Packages, and Names
+
+- In order to manage code better, module is split down into sub-modules
+- A **package** is simply a module that contains sub-modules
+- We can only import sub-modules, not functions
+
+  ```py
+  import package_name.submodule_name
+  # import os.path
+  ```
+
+- when the name of module and class are identical, the name will represent the class
+
+  ```py
+  >>> from datetime import datetime
+  >>> print(datetime)
+  <class 'datetime.datetime'>
+  ```
+
+## L6-27. Quiz: Techniques for Importing Modules
+
+### Importing and accessing from modules
+
+- In this quiz, you'll be using different methods to import and use the `random.randint()` function from the `random` module. Your task is to match the `import` statement with the way you would then call the function itself.
+
+- Match the import statement with the way that `random.randint()` is called
+
+  | IMPORT STATEMENT                     | CALLING THE FUNCTION             |
+  | ------------------------------------ | -------------------------------- |
+  | `import random`                      | `random.randint(0, 10)`          |
+  | `from random import randint`         | `randint(0, 10)`                 |
+  | `import random as rd`                | `rd.randint(0, 10)`              |
+  | `from random import randint as rint` | `rint(0, 10)`                    |
+  | `from random import *`               | **Don't use this import statement!** |
+
+## L6-28. Third-Party Libraries
+
+### Third-Party Libraries
+
+- **pip**: package manager that is included in Python 3
+- One popular alternative is **Anaconda** which is designed specifically for data science.
+- pip install sytax: 
+
+  ```py
+  pip install package_name
+  ```
+
+### Using a `requirements.txt` File
+
+- we used to list all the dependencies in a file called `requirements.txt`, make it easier to share
+- this's an example of `requirements.txt`:
+  - there're 2 equal sign(`=`), not 1
+  - version number is optional, but it usually should be included
+
+  ```
+  beautifulsoup4==4.5.1
+  bs4==0.0.1
+  pytz==2016.7
+  requests==2.11.1
+  ```
+
+- we can use pip to install all dependencies from `requirements.txt` at once:
+  - `r` for requirement
+
+  ```
+  pip install -r requirements.txt
+  ```
+
+### Useful Third-Party Packages
+
+- [IPython](https://ipython.org/) - A better interactive Python interpreter
+- [requests](http://docs.python-requests.org/) - Provides easy to use methods to make web requests. Useful for accessing web APIs.
+- [Flask](http://flask.pocoo.org/) - a lightweight framework for making web applications and APIs.
+- [Django](https://www.djangoproject.com/) - A more featureful framework for making web applications. Django is particularly good for designing complex, content heavy, web applications.
+- [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) - Used to parse HTML and extract information from it. Great for web scraping.
+- [pytest](http://doc.pytest.org/) - extends Python's builtin assertions and unittest module.
+- [PyYAML](http://pyyaml.org/wiki/PyYAML) - For reading and writing [YAML](https://en.wikipedia.org/wiki/YAML) files.
+- [NumPy](http://www.numpy.org/) - The fundamental package for scientific computing with Python. It contains among other things a powerful N-dimensional array object and useful linear algebra capabilities.
+- [pandas](http://pandas.pydata.org/) - A library containing high-performance, data structures and data analysis tools. In particular, pandas provides dataframes!
+- [matplotlib](http://matplotlib.org/) - a 2D plotting library which produces publication quality figures in a variety of hardcopy formats and interactive environments.
+- [ggplot](http://ggplot.yhathq.com/) - Another 2D plotting library, based on R's ggplot2 library.
+- [Pillow](https://python-pillow.org/) - The Python Imaging Library adds image processing capabilities to your Python interpreter.
+- [pyglet](http://www.pyglet.org/) - A cross-platform application framework intended for game development.
+- [Pygame](http://www.pygame.org/) - A set of Python modules designed for writing games.
+- [pytz](http://pytz.sourceforge.net/) - World Timezone Definitions for Python
+
+## L6-29. Experimenting with an Interpreter
+
+### Experimenting With An Interpreter
+
+- type `python` or `python3` in terminal will start a python interactive interpreter
+  - `python` for v2.x, `python3` for v3.x
+  - it's an awesome place to experiment and try bits of python code
+- the value of the last line in a prompt will be outputted automatically
+  - if having multiple lines, we still have to use `print()`
+
+  ```py
+  >>> type(5.23)
+  <class 'float'>
+  ```
+
+- if we define a function, we will see a change at the left side(`...`), meaning continuation lines
+  - we have to include our own indentation
+
+  ```py
+  >>> def cylinder_volume(height, radius):
+  ...         pi = 3.14159
+  ...         return height * pi * radius ** 2
+  ```
+
+- A drawback of using interpreter is hard to edit code, we have to move cursor only by using keyboard, not mouse
+- to quit the Python interpreter
+  - type `exit()` or hit `Ctrl + D` on macOS or Linux
+  - type `exit()` or hit `Ctrl + Z` then `Enter` on Windows
+
+### IPython
+
+- It's an awesome alternative for default Python interpreter
+- It comes with many handy features:
+  - tab completion
+  - `?` for details about an object
+  - `!` to execute system shell commands
+  - syntax highlighting
+  - and [more](https://ipython.org/ipython-doc/3/interactive/tutorial.html)
+
+## L6-30. Online Resources
+
+### Getting the information you need to know
+
+- (X) carry an encyclopedia's worth of knowledge in their heads
+- (O) finding information quickly
+
+### How to Search
+
+1. using `python` or the name of the library
+2. writing good search query can take multiple attempts, try again
+3. try using keywords found on the page we found
+4. copy and paste error messages, remove the unnecessary parts (e.g. line numbers that has error)
+5. ask it ourself! Community like [stackoverflow](https://stackoverflow.com/) is a great place, but there's a etiquitte rules we have to follow
+
+### Hierarchy of Online Resources
+
+- While there are many online resources about programming, not all of the them are created equal. This list of resources is in approximate order of reliability.
+
+  1. [The Python Tutorial](https://docs.python.org/3/tutorial/) - This section of the official documentation surveys Python's syntax and standard library. It uses examples, and is written using less technical language than the main documentation. Make sure you're reading the Python 3 version of the docs!
+  2. [The Python Language and Library References](https://docs.python.org/3/index.html) - The Language Reference and Library Reference are more technical than the tutorial, but they are the definitive sources of truth. As you become increasingly acquainted with Python you should use these resources more and more.
+  3. Third-Party Library Documentation - Third-party libraries publish their documentation on their own websites, and often times at <https://readthedocs.org/>. You can judge the quality of a third-party library by the quality of its documentation. If the developers haven't found time to write good docs, they probably haven't found the time to polish their library either.
+  4. The websites and blogs of prominent experts - The previous resources are primary sources, meaning that they are documentation from the same people who wrote the code being documented. Primary sources are the most reliable. Secondary sources are also extremely valuable. The difficulty with secondary sources is determining the credibility of the source. The websites of authors like [Doug Hellmann](https://doughellmann.com/blog/) and developers like [Eli Bendersky](http://eli.thegreenplace.net/) are excellent. The blog of an unknown author might be excellent, or it might be rubbish.
+  5. [StackOverflow](http://stackoverflow.com/) - This question and answer site has a good amount of traffic, so it's likely that someone has asked (and someone has answered) a related question before! However, answers are provided by volunteers and vary in quality. **Always understand solutions before putting them into your program. One line answers without any explanation are dubious.** This is a good place to find out more about your question or discover alternative search terms.
+  6. Bug Trackers - Sometimes you'll encounter a problem so rare, or so new, that no one has addressed it on StackOverflow. You might find a reference to your error in a bug report on GitHub for instance. These bug reports can be helpful, but you'll probably have to do some original engineering work to solve the problem.
+  7. Random Web Forums - Sometimes your search yields references to forums that haven't been active since 2004, or some similarly ancient time. If these are the only resources that address your problem, you should rethink how you're approaching your solution.
+
+## L6-31. Practice Question
+
+### Practice Question
+
+- For the following practice question you will need to write code in Python in the workspace below. This will allow you to practice the concepts discussed in the Scripting lesson, such as reading and writing files. You will see some older concepts too, but again, we have them there to review and reinforce your understanding of those concepts.
+
+- Question: Create a function that opens the flowers.txt, reads every line in it, and saves it as a dictionary. The main (separate) function should take user input (user's first name and last name) and parse the user input to identify the first letter of the first name. It should then use it to print the flower name with the same first letter (from dictionary created in the first function).
+
+- Sample Output:
+
+  ```
+  >>> Enter your First [space] Last name only: Bill Newman
+  >>> Unique flower name with the first letter: Bellflower
+  ```
+
+- file: flowers.txt
+
+  <details><summary>click here to see flowers.txt</summary>
+
+  <Dropdown Content>
+
+  ```
+  A: African Daisy
+  B: Bellflower
+  C: Coral Bells
+  D: Desert Rose
+  E: English Bluebell
+  F: Forget Me Not
+  G: Goldenrod
+  H: Heliotrope
+  I: Impatiens
+  J: Jamesia americana
+  K: Kangaroo Paw
+  L: Lily of the Valley
+  M: Monks Hood
+  N: Nemophila
+  O: Ox Eye Daisy
+  P: Peace Lily
+  Q: Quaker Ladies
+  R: Rain Lily
+  S: Snapdragon
+  T: Trumpet Vine
+  U: Urn Plant
+  V: Viola wittrockiana
+  W: Whirling Butterflies
+  X: Xanthoceras sorbifolium
+  Y: Yellow Archangel
+  Z: Zinnia elegans
+  ```
+  </details>
+
+- my solution: python match_flower_name.py
+  - lower the key of flowers.txt by using `str.lower()` method
+  - remove the `\n` at the end by using `.strip()` method
+
+  ```py
+  # Write your code here
+
+  # HINT: create a dictionary from flowers.txt
+  flowers = dict()
+  with open('flowers.txt') as f:
+      for line in f:
+          (key, value) = line.strip().split(': ')
+          flowers[key.lower()] = value
+
+  # HINT: create a function to ask for user's first and last name
+  name = input('Enter your First [space] Last name only: ')
+  firstLetter = name[0].lower()
+
+  # print the desired output
+  print('Unique flower name with the first letter: {}'.format(flowers[firstLetter]))
+  ```
+
+- output
+
+  ```
+  Enter your First [space] Last name only: Bill Newman
+  Unique flower name with the first letter: Bellflower
+  ```
+
+- answer:
+  - declare a function called `create_flowerdict()`
+  - take filename as an parameter of `create_flowerdict()`
+
+  ```py
+  # function that creates a flower_dictionary from filename
+  def create_flowerdict(filename):
+      flower_dict = {}
+      with open(filename) as f:
+          for line in f:
+              letter = line.split(": ")[0].lower()
+              flower = line.split(": ")[1].strip()
+              flower_dict[letter] = flower
+      return flower_dict
+
+  # Main function that prompts for user input, parses out the first letter
+  # includes function call for create_flowerdict to create dictionary
+  def main(): 
+      flower_d = create_flowerdict('flowers.txt')
+      full_name = input("Enter your First [space] Last name only: ")
+      first_name = full_name[0].lower()
+      first_letter = first_name[0]
+  # print command that prints final input with value from corresponding key in dictionary
+      print("Unique flower name with the first letter: {}".format(flower_d[first_letter]))
+
+  main()
+  ```
+
 ## Vocabulary
 
 1. tautology (n.) 贅述
+2. burgeoning (adj.) 迅速發展的
+3. myriad (adj.) 無數的
+4. keep abreast with (phr.) 跟上；不落後於
+5. definitive (adj.) 最權威的
+6. dubious (adj.) 可疑的
 
 <!-- ## Reference
 
