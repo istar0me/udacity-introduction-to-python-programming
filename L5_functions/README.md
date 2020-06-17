@@ -25,7 +25,7 @@
   - [L5-10. Documentation](#l5-10-documentation)
   - [L5-11. Quiz: Documentation](#l5-11-quiz-documentation)
     - [Quiz: Write a Docstring](#quiz-write-a-docstring)
-  - [L5-13. Lambda Expressions](#l5-13-lambda-expressions)
+  - [L5-13. Lambda Expressions (Closure)](#l5-13-lambda-expressions-closure)
     - [standard function vs. lambda expression](#standard-function-vs-lambda-expression)
   - [L5-14. Quiz: Lambda Expressions](#l5-14-quiz-lambda-expressions)
     - [Quiz: Lambda with Map](#quiz-lambda-with-map)
@@ -416,7 +416,7 @@ Write a docstring for the `readable_timedelta` function you defined earlier! Rem
       """
   ```
 
-## L5-13. Lambda Expressions
+## L5-13. Lambda Expressions (Closure)
 
 - We can use lambda expressions to create anonymous functions.
   - That is, functions that don’t have a name.
