@@ -10,6 +10,7 @@
 3. [Data Structure](L3_data_structure/README.md)
 4. [Control Flow](L4_control_flow/README.md)
 5. [Functions](L5_functions/README.md)
+6. [Scripting](L6_scripting/README.md)
 
 ## Further Reading
 
